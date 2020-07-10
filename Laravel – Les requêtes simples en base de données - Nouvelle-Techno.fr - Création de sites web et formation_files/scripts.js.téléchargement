@@ -1,0 +1,56 @@
+$(function () {
+    $('a[href^="#"]').on('click', function(){
+        var the_id = $(this).attr("href");
+        if (the_id === '#') {
+            return;
+        }
+        $('html, body').animate({
+            scrollTop:$(the_id).offset().top
+        }, 'slow');
+        return false;
+    });
+    $(document).scroll(scrolled);
+    $("#archives").on("change", loadArchive);
+    $('#comments a[href="#"]').on('click', function(e){
+        e.preventDefault();
+        var idcomm = $(this).data("comm");
+        $("#isReply").val("on");
+        $("#id_comm").val(idcomm);
+        $('html, body').animate({
+            scrollTop:$("#commentForm").offset().top
+        }, 'slow');
+        return false;
+    });
+
+});
+
+function scrolled() {
+    // if ($(window).scrollTop() === 0) {
+    //     $(".navbar-brand > img").removeClass("stick");
+    // } else {
+    //     $(".navbar-brand > img").addClass("stick");
+    // }
+    if($(window).scrollTop() > $(window).height()){
+        $("#returnTop").show();
+    }else{
+        $("#returnTop").hide();
+    }
+    // Calcul de la hauteur "utile"
+    var hauteur = $(document).height() - $(window).height();
+
+    // Récupération de la position verticale
+    var position = $(document).scrollTop();
+
+    // Récupération de la largeur de la fenêtre
+    var largeur = $(window).width();
+
+    // Calcul de la largeur de la barre		
+    var barre = position / hauteur * largeur;
+
+    // Modification du CSS pour élargir ou réduire la barre		
+    $("#progress").css("width", barre);
+}
+
+function loadArchive(){
+    window.location.href = $(this).val();
+}

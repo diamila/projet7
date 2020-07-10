@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<!-- saved from url=(0096)https://nouvelle-techno.fr/actualites/2018/03/29/laravel-les-requetes-simples-en-base-de-donnees -->
+<html lang="fr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<script src="./Laravel – Les requêtes simples en base de données - Nouvelle-Techno.fr - Création de sites web et formation_files/f.txt"></script><script src="./Laravel – Les requêtes simples en base de données - Nouvelle-Techno.fr - Création de sites web et formation_files/osd.js.téléchargement"></script><script src="./Laravel – Les requêtes simples en base de données - Nouvelle-Techno.fr - Création de sites web et formation_files/f.txt"></script><script src="./Laravel – Les requêtes simples en base de données - Nouvelle-Techno.fr - Création de sites web et formation_files/ca-pub-3582925457082752.js.téléchargement"></script><script type="text/javascript" async="" src="./Laravel – Les requêtes simples en base de données - Nouvelle-Techno.fr - Création de sites web et formation_files/recaptcha__fr.js.téléchargement"></script><script type="text/javascript" src="./Laravel – Les requêtes simples en base de données - Nouvelle-Techno.fr - Création de sites web et formation_files/tarteaucitron.js.téléchargement"></script>
+
+	<script type="text/javascript">
+	tarteaucitron.init({
+		"hashtag": "#tarteaucitron", /* Ouverture automatique du panel avec le hashtag */
+		"highPrivacy": true, /* désactiver le consentement implicite (en naviguant) ? */
+		"orientation": "bottom", /* le bandeau doit être en haut (top) ou en bas (bottom) ? */
+		"adblocker": false, /* Afficher un message si un adblocker est détecté */
+		"showAlertSmall": true, /* afficher le petit bandeau en bas à droite ? */
+		"cookieslist": true, /* Afficher la liste des cookies installés ? */
+		"removeCredit": false, /* supprimer le lien vers la source ? */
+		"cookieDomain": ".nouvelle-techno.fr" /* Nom de domaine sur lequel sera posé le cookie pour les sous-domaines */
+	});
+	</script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="IGhIn2xBU61SLNmKm4g8yg4oHeh44fyxsFSfDwnK">
+			<title>Laravel – Les requêtes simples en base de données - Nouvelle-Techno.fr - Création de sites web et formation</title>
+		<link rel="canonical" href="https://nouvelle-techno.fr/actualites/2018/03/29/laravel-les-requetes-simples-en-base-de-donnees">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="Laravel – Les requêtes simples en base de données">
+	<meta property="og:url" content="https://nouvelle-techno.fr/actualites/2018/03/29/laravel-les-requetes-simples-en-base-de-donnees">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:site" content="@Nouvelle_Techno">
+	<meta name="twitter:title" content="Laravel – Les requêtes simples en base de données">
+	<meta name="twitter:url" content="https://nouvelle-techno.fr/actualites/2018/03/29/laravel-les-requetes-simples-en-base-de-donnees">
+	<meta name="twitter:creator" content="@Nouvelle_Techno">
+			<meta property="og:image" content="https://nouvelle-techno.fr/assets/img/featured/Laravel_logo-1.png">
+		<meta property="og:description" content="
+Série « Bien débuter avec le Framework Laravel »
+">
+		<meta name="twitter:description" content="
+Série « Bien débuter avec le Framework Laravel »
+">
+		<meta name="twitter:image" content="https://nouvelle-techno.fr/assets/img/featured/Laravel_logo-1.png">
+		<link rel="stylesheet" href="./Laravel – Les requêtes simples en base de données - Nouvelle-Techno.fr - Création de sites web et formation_files/prism.css" type="text/css" media="all">
+	<script>
+		if(localStorage.theme == "black")
+			document.write("<link rel='stylesheet' href='https://nouvelle-techno.fr/assets/css/nouvelletechno_black.min.css' type='text/css' media='all'>");
+		else
+			document.write("<link rel='stylesheet' href='https://nouvelle-techno.fr/assets/css/nouvelletechno.min.css' type='text/css' media='all'>");
+	</script><link rel="stylesheet" href="./Laravel – Les requêtes simples en base de données - Nouvelle-Techno.fr - Création de sites web et formation_files/nouvelletechno.min.css" type="text/css" media="all">
+	<link rel="icon" type="image/png" href="https://nouvelle-techno.fr/favicon.png">
+	<script type="application/ld+json">
+	{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"url": "https://nouvelle-techno.fr",
+		"sameAs": [
+			"https://www.facebook.com/nouvelletechnofr/",
+			"https://twitter.com/nouvelle_techno"
+		],
+  		"logo": "https://nouvelle-techno.fr/assets/img/logos/ntlogo.png",
+		"contactPoint": [
+			{ "@type": "ContactPoint",
+			"telephone": "+33 6 52 91 14 64",
+			"contactType": "customer service"
+			}
+		]
+	}
+	</script>
+
+
+<link rel="preload" href="./Laravel – Les requêtes simples en base de données - Nouvelle-Techno.fr - Création de sites web et formation_files/f(1).txt" as="script"><script type="text/javascript" src="./Laravel – Les requêtes simples en base de données - Nouvelle-Techno.fr - Création de sites web et formation_files/f(1).txt"></script><link rel="preload" href="./Laravel – Les requêtes simples en base de données - Nouvelle-Techno.fr - Création de sites web et formation_files/f(2).txt" as="script"><script type="text/javascript" src="./Laravel – Les requêtes simples en base de données - Nouvelle-Techno.fr - Création de sites web et formation_files/f(2).txt"></script><link rel="preload" href="https://pagead2.googlesyndication.com/pagead/js/r20190624/r20190131/show_ads_impl.js" as="script"><style>.cke{visibility:hidden;}</style><script type="text/javascript" src="./Laravel – Les requêtes simples en base de données - Nouvelle-Techno.fr - Création de sites web et formation_files/config.js.téléchargement"></script><link rel="stylesheet" type="text/css" href="./Laravel – Les requêtes simples en base de données - Nouvelle-Techno.fr - Création de sites web et formation_files/editor.css"><script type="text/javascript" src="./Laravel – Les requêtes simples en base de données - Nouvelle-Techno.fr - Création de sites web et formation_files/fr.js.téléchargement"></script><script type="text/javascript" src="./Laravel – Les requêtes simples en base de données - Nouvelle-Techno.fr - Création de sites web et formation_files/styles.js.téléchargement"></script><script type="text/javascript" src="./Laravel – Les requêtes simples en base de données - Nouvelle-Techno.fr - Création de sites web et formation_files/plugin.js.téléchargement"></script><link rel="stylesheet" type="text/css" href="./Laravel – Les requêtes simples en base de données - Nouvelle-Techno.fr - Création de sites web et formation_files/scayt.css"><link rel="stylesheet" type="text/css" href="./Laravel – Les requêtes simples en base de données - Nouvelle-Techno.fr - Création de sites web et formation_files/dialog.css"><link rel="stylesheet" type="text/css" href="./Laravel – Les requêtes simples en base de données - Nouvelle-Techno.fr - Création de sites web et formation_files/tableselection.css"><link rel="stylesheet" type="text/css" href="./Laravel – Les requêtes simples en base de données - Nouvelle-Techno.fr - Création de sites web et formation_files/wsc.css"><script type="text/javascript" src="./Laravel – Les requêtes simples en base de données - Nouvelle-Techno.fr - Création de sites web et formation_files/fr.js(1).téléchargement"></script><script type="text/javascript" src="./Laravel – Les requêtes simples en base de données - Nouvelle-Techno.fr - Création de sites web et formation_files/highlight.pack.js.téléchargement"></script><link rel="stylesheet" type="text/css" href="./Laravel – Les requêtes simples en base de données - Nouvelle-Techno.fr - Création de sites web et formation_files/tarteaucitron.css"><script type="text/javascript" id="" async="" src="./Laravel – Les requêtes simples en base de données - Nouvelle-Techno.fr - Création de sites web et formation_files/tarteaucitron.fr.js.téléchargement"></script><script type="text/javascript" id="" async="" src="./Laravel – Les requêtes simples en base de données - Nouvelle-Techno.fr - Création de sites web et formation_files/tarteaucitron.services.js.téléchargement"></script></head>
+
+<body lang="fr" id="top">
+    <div id="progress" style="width: 855.513px;"></div>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="navmenu">
+            <div class="container">
+                <a class="navbar-brand" href="https://nouvelle-techno.fr/"><img src="./Laravel – Les requêtes simples en base de données - Nouvelle-Techno.fr - Création de sites web et formation_files/ntlogo.png" alt="Logo Nouvelle-Techno.fr"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                                                                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+
+						<li class="nav-item">
+							<a class="nav-link" href="https://nouvelle-techno.fr/#offres">Offres <span class="sr-only">(current)</span></a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="https://nouvelle-techno.fr/#realisations">Réalisations</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="https://nouvelle-techno.fr/#actualites">Actualités</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="https://nouvelle-techno.fr/#contact">Contact</a>
+						</li>
+					                </ul></div>
+            </div>
+        </nav>
+    </div>
+<script src="./Laravel – Les requêtes simples en base de données - Nouvelle-Techno.fr - Création de sites web et formation_files/api.js.téléchargement"></script>
+<!-- Header -->
+<header class="container-fluid" style="background-image: url(https://nouvelle-techno.fr/assets/img/featured/Laravel_logo-1.png); background-size: cover; ">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="my-4">Laravel – Les requêtes simples en base de données</h1>
+        </div>
+    </div>
+</header>
+<!-- Content -->
+<section id="article" class="container-fluid pb-4">
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "NewsArticle",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://nouvelle-techno.fr/actualites/2018/03/29/laravel-les-requetes-simples-en-base-de-donnees"
+  },
+  "headline": "Laravel – Les requêtes simples en base de données",
+  "image": [
+    "https://nouvelle-techno.fr/assets/img/featured/Laravel_logo-1.png"
+   ],
+  "datePublished": "2018-03-29 00:00:00",
+  "dateModified": "2018-03-29 00:00:00",
+  "author": {
+    "@type": "Person",
+    "name": "Nouvelle-Techno.fr"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "Nouvelle-Techno.fr",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://nouvelle-techno.fr/assets/img/logos/ntlogo.png"
+    }
+  },
+  "description": "
+S&eacute;rie &laquo; Bien d&eacute;buter avec le Framework Laravel &raquo;
+
+Laravel &ndash; G&e..."
+}
+</script>
+        	<article class="container">
+		<header class="row">
+			<div class="col-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="https://nouvelle-techno.fr/">Accueil</a></li>
+                        <li class="breadcrumb-item"><a href="https://nouvelle-techno.fr/actualites">Actualites</a></li>
+                        <li class="breadcrumb-item active">Laravel – Les requêtes simples en base de données</li>
+                    </ol>
+                </nav>
+                <script type="application/ld+json">
+                {
+                "@context": "http://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement": [{
+                    "@type": "ListItem",
+                    "position": 1,
+                    "item": {
+                    "@id": "https://nouvelle-techno.fr",
+                    "name": "Accueil"
+                    }
+                },{
+                    "@type": "ListItem",
+                    "position": 2,
+                    "item": {
+                    "@id": "https://nouvelle-techno.fr/actualites",
+                    "name": "Actualités"
+                    }
+                },{
+                    "@type": "ListItem",
+                    "position": 3,
+                    "item": {
+                    "@id": "https://nouvelle-techno.fr/actualites/2018/03/29/laravel-les-requetes-simples-en-base-de-donnees",
+                    "name": "Laravel – Les requêtes simples en base de données"
+                    }
+                }]
+                }
+                </script>
+                <p><i class="far fa-calendar-alt"></i> 29 mars 2018
+                                     - <i class="far fa-folder-open"></i> : 
+                                         
+                        <a href="https://nouvelle-techno.fr/actualites/categorie/mvc">MVC</a> 
+                     
+                        <a href="https://nouvelle-techno.fr/actualites/categorie/laravel">Laravel</a> 
+                                                         - <i class="far fa-comments"></i> :
+                                    Pas de commentaire
+                                </p>
+                <p><i class="far fa-thumbs-up" id="vert"></i>&nbsp;<span>1</span> <i class="far fa-thumbs-down" id="rouge"></i> <span>0</span>
+                </p>
+                
+			</div>
+		</header>
+		<main class="row pt-3">
+            
+            
+            
+            <div class="col-12">
+                <div class="articleContent">
+                    <div id="series-list-posts-4" class="widget series-list-posts amr_widget">
+<h2 class="widgettitle">Série « Bien débuter avec le Framework Laravel »</h2>
+<ul class="series-list">
+<li><a href="https://nouvelle-techno.fr/actualites/2017/12/20/laravel-generalites-et-installation/">Laravel – Généralités et Installation</a></li>
+<li><a href="https://nouvelle-techno.fr/actualites/2017/12/21/laravel-premiere-route/">Laravel – Première route</a></li>
+<li><a href="https://nouvelle-techno.fr/actualites/2018/01/08/laravel-acces-a-la-base-de-donnees-les-migrations/">Laravel – Accès à la base de données – Les Migrations</a></li>
+<li><a href="https://nouvelle-techno.fr/actualites/2018/02/14/laravel-acces-a-base-de-donnees-modeles/">Laravel – Accès à la base de données – Les Modèles</a></li>
+<li><a href="https://nouvelle-techno.fr/actualites/2018/03/20/laravel-les-controleurs/">Laravel – Les Contrôleurs</a></li>
+<li><a href="https://nouvelle-techno.fr/actualites/2018/03/22/laravel-authentification-des-utilisateurs/">Laravel – Authentification des utilisateurs</a></li>
+<li><a href="https://nouvelle-techno.fr/actualites/2018/03/28/laravel-les-vues-statiques/">Laravel – Les vues statiques</a></li>
+<li><a href="https://nouvelle-techno.fr/actualites/2018/03/28/laravel-les-vues-dynamiques/">Laravel – Les vues dynamiques</a></li>
+<li><a href="https://nouvelle-techno.fr/actualites/2018/03/29/laravel-les-requetes-simples-en-base-de-donnees/">Laravel – Les requêtes simples en base de données</a></li><li><a href="https://nouvelle-techno.fr/actualites/2018/06/11/laravel-envoyer-un-e-mail-ou-courriel">Laravel - Envoyer un e-mail (ou courriel)</a></li></ul>
+</div>
+<p>Comme dans tout site dont les données sont issues d’une base de données, nous allons devoir réaliser des requêtes.</p>
+<p>Vous connaissez certainement les requêtes mySQL écrites sous la forme « select * from articles where auteur = ‘brouette’ order by ‘date’ asc » par exemple.</p>
+<p>Avec Laravel, ceci ne sera plus nécessaire. En effet, nous allons utiliser <a href="https://nouvelle-techno.fr/actualites/2018/02/14/laravel-acces-a-base-de-donnees-modeles/">nos modèles</a> et le système intégré de Laravel pour effectuer nos sélections.</p>
+<h2>Principe de l’ORM Eloquent</h2>
+<p>Avec le système Eloquent, nous allons pouvoir utiliser les modèles créés dans un article précédent et effectuer facilement tout type de requête plus ou moins complexe en quelques lignes.</p>
+<p>Partons du principe que nous avons créé un modèle qui permette d’accéder à la table des articles de notre blog. Nous allons voir de quelle manière accéder aux données.</p>
+<p>Il faut tout d’abord déclarer l’utilisation du modèle dans notre contrôleur comme ci-dessous</p>
+<div class="code-embed-wrapper">
+<div class="code-toolbar"><pre class="code-embed-pre line-numbers  language-php" data-line="6" data-start="1" data-line-offset="0" style="counter-reset: linenumber 0;"><code class=" language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token keyword">namespace</span> <span class="token package">App<span class="token punctuation">\</span>Http<span class="token punctuation">\</span>Controllers</span><span class="token punctuation">;</span>
+
+<span class="token keyword">use</span> <span class="token package">Illuminate<span class="token punctuation">\</span>Http<span class="token punctuation">\</span>Request</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">App<span class="token punctuation">\</span>ArticlesModel</span> <span class="token keyword">as</span> Articles<span class="token punctuation">;</span> <span class="token comment">// Nous déclarons l'utilisation du modèle ArticlesModel, qu'on appellera Articles pour la suite</span>
+
+<span class="token keyword">class</span> <span class="token class-name">articlesController</span> <span class="token keyword">extends</span> <span class="token class-name">Controller</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">articles</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+		<span class="token comment">// Ici se trouvera le code qui récupèrera la liste des articles</span>
+		<span class="token comment">// la variable $articles contient une liste d'articles</span>
+	    <span class="token keyword">return</span> <span class="token function">view</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'articles'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token single-quoted-string string">'listeArticles'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token variable">$articles</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// La vue articles aura accès à la liste sous le nom listeArticles</span>
+    <span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">article</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+		<span class="token comment">// Ici se trouvera le code qui récupèrera un article</span>
+		<span class="token comment">// la variable $article contient un seul article</span>
+	    <span class="token keyword">return</span> <span class="token function">view</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'article'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token single-quoted-string string">'article'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token variable">$article</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// La vue article aura accès à un seul article sous le nom article</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code><div aria-hidden="true" data-range="6" class=" line-highlight" style="top: 116px; height: 23px;"></div></pre><div class="toolbar"><div class="toolbar-item"><span>PHP</span></div></div></div>
+<div class="code-embed-infos"><span class="code-embed-name">Langage : PHP - Fichier app/Http/Controllers/articlesController.php</span></div>
+</div>
+<p>Avec cet ajout, nous pouvons maintenant créer nos requêtes.</p>
+<p><strong>Les exemples suivants pourront prendre place aux lignes 11 ou 16 du code ci-dessus.</strong></p>
+<h2>Sélections simples</h2>
+<p>Pour sélectionner des données, nous allons toujours utiliser le même type de syntaxe. Pour commencer, sélectionnons juste tous les enregistrements de la table. Nous écrirons donc :</p>
+<div class="code-embed-wrapper">
+<div class="code-toolbar"><pre class="code-embed-pre line-numbers  language-php" data-start="1" data-line-offset="0" style="counter-reset: linenumber 0;"><code class=" language-php"><span class="token variable">$articles</span> <span class="token operator">=</span> Articles<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">all</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// Cette ligne est équivalente à select * from articles</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><span>PHP</span></div></div></div>
+<div class="code-embed-infos">&nbsp;</div>
+</div>
+<p>Nous pouvons bien sûr ajouter des contraintes à notre requête, comme un <strong>where</strong>, un <strong>order by</strong>…</p>
+<p>Voici quelques exemples de contraintes</p>
+<div class="code-embed-wrapper">
+<div class="code-toolbar"><pre class="code-embed-pre line-numbers  language-php" data-start="1" data-line-offset="0" style="counter-reset: linenumber 0;"><code class=" language-php"><span class="token comment">// Ajout d'une clause where 'auteur' = 'brouette'</span>
+<span class="token variable">$articles</span> <span class="token operator">=</span> Articles<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">where</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'auteur'</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'brouette'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Ajout d'un tri</span>
+<span class="token variable">$articles</span> <span class="token operator">=</span> Articles<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">orderBy</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'date'</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'desc'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Ajout d'une limite (sur l'exemple avec where, par exemple)</span>
+<span class="token variable">$articles</span> <span class="token operator">=</span> Articles<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">where</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'auteur'</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'brouette'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">take</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Il est bien sûr possible de cumuler les contraintes</span>
+<span class="token variable">$articles</span> <span class="token operator">=</span> Articles<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">where</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'auteur'</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'brouette'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">orderBy</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'date'</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'desc'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">take</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Ne prendre que le 1er résultat (sur l'exemple avec where, par exemple)</span>
+<span class="token variable">$articles</span> <span class="token operator">=</span> Articles<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">where</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'auteur'</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'brouette'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">first</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Récupérer l'enregistrement qui a la clé primaire 3 (par exemple)</span>
+<span class="token variable">$articles</span> <span class="token operator">=</span> Articles<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Récupérer les enregistrement qui ont la clé primaire 3, ou 5, ou 9 (par exemple)</span>
+<span class="token variable">$articles</span> <span class="token operator">=</span> Articles<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">9</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><span>PHP</span></div></div></div>
+<div class="code-embed-infos">&nbsp;</div>
+</div>
+<p>Voilà, à suivre, les requêtes « complexes » (jointures, par exemple).</p><p></p>
+
+                    <div id="socialSharing">
+                        <!-- Load Facebook SDK for JavaScript -->
+                        <div class="fb-like" data-layout="button_count" data-action="like" data-share="true"><div class="tac_activate">   <div class="tac_float">      <b>Facebook</b> est désactivé.      <div class="tarteaucitronAllow" id="Eng57428edfacebook" onclick="tarteaucitron.userInterface.respond(this, true);">          ✓ Autoriser       </div>   </div></div></div>
+                        <span class="tacTwitter"><div class="tac_activate">   <div class="tac_float">      <b>Twitter</b> est désactivé.      <div class="tarteaucitronAllow" id="Eng91817edtwitter" onclick="tarteaucitron.userInterface.respond(this, true);">          ✓ Autoriser       </div>   </div></div></span><a href="https://twitter.com/share" class="twitter-share-button" data-via="Nouvelle_Techno" data-count="horizontal" data-dnt="true"></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-12">
+                <script async="" src="./Laravel – Les requêtes simples en base de données - Nouvelle-Techno.fr - Création de sites web et formation_files/f(3).txt"></script>
+                <!-- Nouvelle-Techno Fin Post -->
+                <ins class="adsbygoogle" style="display: block; height: 90px;" data-ad-client="ca-pub-3582925457082752" data-ad-slot="1570751177" data-ad-format="auto" data-full-width-responsive="true" data-adsbygoogle-status="done"><div class="tac_activate">   <div class="tac_float">      <b>Google Adsense</b> est désactivé.      <div class="tarteaucitronAllow" id="Eng14675edadsense" onclick="tarteaucitron.userInterface.respond(this, true);">          ✓ Autoriser       </div>   </div></div></ins>
+                <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+            <div class="col-12">
+                                    <p><i class="fas fa-tags"></i> : 
+                                         
+                        <a href="https://nouvelle-techno.fr/actualites/motcle/tutoriel">Tutoriel</a> 
+                     
+                        <a href="https://nouvelle-techno.fr/actualites/motcle/framework">Framework</a> 
+                     
+                        <a href="https://nouvelle-techno.fr/actualites/motcle/models">Models</a> 
+                     
+                        <a href="https://nouvelle-techno.fr/actualites/motcle/mvc">MVC</a> 
+                     
+                        <a href="https://nouvelle-techno.fr/actualites/motcle/base-de-donnees">Base de données</a> 
+                     
+                        <a href="https://nouvelle-techno.fr/actualites/motcle/requete">Requête</a> 
+                     
+                        <a href="https://nouvelle-techno.fr/actualites/motcle/mysql">MySQL</a> 
+                     
+                        <a href="https://nouvelle-techno.fr/actualites/motcle/laravel">Laravel</a> 
+                                        </p>
+                            </div>
+            <div class="col-12" id="comments">
+                <h2>Commentaires</h2>
+                <a class="btn btn-primary btn-lg mb-3" href="https://nouvelle-techno.fr/actualites/2018/03/29/laravel-les-requetes-simples-en-base-de-donnees#commentForm">Ecrire un commentaire</a>
+                                    <p>Pas encore de commentaire</p>
+                                    <script type="text/javascript" src="./Laravel – Les requêtes simples en base de données - Nouvelle-Techno.fr - Création de sites web et formation_files/ckeditor.js.téléchargement"></script>		
+                    <form method="POST" action="https://nouvelle-techno.fr/actualites/postcomm" id="commentForm">
+                        <input type="hidden" name="_token" value="IGhIn2xBU61SLNmKm4g8yg4oHeh44fyxsFSfDwnK">
+                        <input type="hidden" name="article" value="30">
+                        <input type="hidden" name="isReply" id="isReply" value="off">
+                        <input type="hidden" name="id_comm" id="id_comm" value="">
+                        <div class="form-group row">
+                            <div class="col-12">
+                                <h2>Laisser un commentaire</h2>
+                                <hr>
+                            </div>
+                            <label for="name" class="col-md-3 col-form-label text-md-right">Nom (pseudo)</label>
+
+                            <div class="col-md-8">
+                                <input id="name" type="text" class="form-control" name="name" value="" required="">
+                                                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="email" class="col-md-3 col-form-label text-md-right">Email</label>
+
+                            <div class="col-md-8">
+                                <input id="email" type="text" class="form-control" name="email" value="" required="">
+                                                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="description" class="col-md-3 col-form-label text-md-right">Description</label>
+                            <div class="col-md-8">
+                                <textarea id="description" class="form-control" name="description" value="" style="visibility: hidden; display: none;"></textarea><div id="cke_description" class="cke_1 cke cke_reset cke_chrome cke_editor_description cke_ltr cke_browser_webkit" dir="ltr" lang="fr" role="application" aria-labelledby="cke_description_arialbl"><span id="cke_description_arialbl" class="cke_voice_label">Éditeur de texte enrichi, description</span><div class="cke_inner cke_reset" role="presentation"><span id="cke_1_top" class="cke_top cke_reset_all" role="presentation" style="height: auto; user-select: none;"><span id="cke_8" class="cke_voice_label">Barres d'outils de l'éditeur</span><span id="cke_1_toolbox" class="cke_toolbox" role="group" aria-labelledby="cke_8" onmousedown="return false;"><span id="cke_11" class="cke_toolbar" aria-labelledby="cke_11_label" role="toolbar"><span id="cke_11_label" class="cke_voice_label">Presse-papier/Défaire</span><span class="cke_toolbar_start"></span><span class="cke_toolgroup" role="presentation"><a id="cke_12" class="cke_button cke_button__cut cke_button_disabled " href="javascript:void(&#39;Couper&#39;)" title="Couper (Ctrl+X)" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_12_label" aria-describedby="cke_12_description" aria-haspopup="false" aria-disabled="true" onkeydown="return CKEDITOR.tools.callFunction(2,event);" onfocus="return CKEDITOR.tools.callFunction(3,event);" onclick="CKEDITOR.tools.callFunction(4,this);return false;"><span class="cke_button_icon cke_button__cut_icon" style="background-image:url(&#39;https://nouvelle-techno.fr/assets/ckeditor/plugins/icons.png?t=I2EI&#39;);background-position:0 -264px;background-size:auto;">&nbsp;</span><span id="cke_12_label" class="cke_button_label cke_button__cut_label" aria-hidden="false">Couper</span><span id="cke_12_description" class="cke_button_label" aria-hidden="false">Raccourci clavier Ctrl+X</span></a><a id="cke_13" class="cke_button cke_button__copy cke_button_disabled " href="javascript:void(&#39;Copier&#39;)" title="Copier (Ctrl+C)" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_13_label" aria-describedby="cke_13_description" aria-haspopup="false" aria-disabled="true" onkeydown="return CKEDITOR.tools.callFunction(5,event);" onfocus="return CKEDITOR.tools.callFunction(6,event);" onclick="CKEDITOR.tools.callFunction(7,this);return false;"><span class="cke_button_icon cke_button__copy_icon" style="background-image:url(&#39;https://nouvelle-techno.fr/assets/ckeditor/plugins/icons.png?t=I2EI&#39;);background-position:0 -216px;background-size:auto;">&nbsp;</span><span id="cke_13_label" class="cke_button_label cke_button__copy_label" aria-hidden="false">Copier</span><span id="cke_13_description" class="cke_button_label" aria-hidden="false">Raccourci clavier Ctrl+C</span></a><a id="cke_14" class="cke_button cke_button__paste cke_button_off" href="javascript:void(&#39;Coller&#39;)" title="Coller (Ctrl+V)" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_14_label" aria-describedby="cke_14_description" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(8,event);" onfocus="return CKEDITOR.tools.callFunction(9,event);" onclick="CKEDITOR.tools.callFunction(10,this);return false;"><span class="cke_button_icon cke_button__paste_icon" style="background-image:url(&#39;https://nouvelle-techno.fr/assets/ckeditor/plugins/icons.png?t=I2EI&#39;);background-position:0 -312px;background-size:auto;">&nbsp;</span><span id="cke_14_label" class="cke_button_label cke_button__paste_label" aria-hidden="false">Coller</span><span id="cke_14_description" class="cke_button_label" aria-hidden="false">Raccourci clavier Ctrl+V</span></a><a id="cke_15" class="cke_button cke_button__pastetext cke_button_off" href="javascript:void(&#39;Coller comme texte brut&#39;)" title="Coller comme texte brut (Ctrl+Majuscule+V)" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_15_label" aria-describedby="cke_15_description" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(11,event);" onfocus="return CKEDITOR.tools.callFunction(12,event);" onclick="CKEDITOR.tools.callFunction(13,this);return false;"><span class="cke_button_icon cke_button__pastetext_icon" style="background-image:url(&#39;https://nouvelle-techno.fr/assets/ckeditor/plugins/icons.png?t=I2EI&#39;);background-position:0 -720px;background-size:auto;">&nbsp;</span><span id="cke_15_label" class="cke_button_label cke_button__pastetext_label" aria-hidden="false">Coller comme texte brut</span><span id="cke_15_description" class="cke_button_label" aria-hidden="false">Raccourci clavier Ctrl+Majuscule+V</span></a><a id="cke_16" class="cke_button cke_button__pastefromword cke_button_off" href="javascript:void(&#39;Coller depuis Word&#39;)" title="Coller depuis Word" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_16_label" aria-describedby="cke_16_description" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(14,event);" onfocus="return CKEDITOR.tools.callFunction(15,event);" onclick="CKEDITOR.tools.callFunction(16,this);return false;"><span class="cke_button_icon cke_button__pastefromword_icon" style="background-image:url(&#39;https://nouvelle-techno.fr/assets/ckeditor/plugins/icons.png?t=I2EI&#39;);background-position:0 -768px;background-size:auto;">&nbsp;</span><span id="cke_16_label" class="cke_button_label cke_button__pastefromword_label" aria-hidden="false">Coller depuis Word</span><span id="cke_16_description" class="cke_button_label" aria-hidden="false"></span></a><span class="cke_toolbar_separator" role="separator"></span><a id="cke_17" class="cke_button cke_button__undo cke_button_disabled " href="javascript:void(&#39;Annuler&#39;)" title="Annuler (Ctrl+Z)" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_17_label" aria-describedby="cke_17_description" aria-haspopup="false" aria-disabled="true" onkeydown="return CKEDITOR.tools.callFunction(17,event);" onfocus="return CKEDITOR.tools.callFunction(18,event);" onclick="CKEDITOR.tools.callFunction(19,this);return false;"><span class="cke_button_icon cke_button__undo_icon" style="background-image:url(&#39;https://nouvelle-techno.fr/assets/ckeditor/plugins/icons.png?t=I2EI&#39;);background-position:0 -1008px;background-size:auto;">&nbsp;</span><span id="cke_17_label" class="cke_button_label cke_button__undo_label" aria-hidden="false">Annuler</span><span id="cke_17_description" class="cke_button_label" aria-hidden="false">Raccourci clavier Ctrl+Z</span></a><a id="cke_18" class="cke_button cke_button__redo cke_button_disabled " href="javascript:void(&#39;Rétablir&#39;)" title="Rétablir (Ctrl+Y)" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_18_label" aria-describedby="cke_18_description" aria-haspopup="false" aria-disabled="true" onkeydown="return CKEDITOR.tools.callFunction(20,event);" onfocus="return CKEDITOR.tools.callFunction(21,event);" onclick="CKEDITOR.tools.callFunction(22,this);return false;"><span class="cke_button_icon cke_button__redo_icon" style="background-image:url(&#39;https://nouvelle-techno.fr/assets/ckeditor/plugins/icons.png?t=I2EI&#39;);background-position:0 -960px;background-size:auto;">&nbsp;</span><span id="cke_18_label" class="cke_button_label cke_button__redo_label" aria-hidden="false">Rétablir</span><span id="cke_18_description" class="cke_button_label" aria-hidden="false">Raccourci clavier Ctrl+Y</span></a></span><span class="cke_toolbar_end"></span></span><span id="cke_19" class="cke_toolbar" aria-labelledby="cke_19_label" role="toolbar"><span id="cke_19_label" class="cke_voice_label">Édition</span><span class="cke_toolbar_start"></span><span class="cke_toolgroup" role="presentation"><a id="cke_20" class="cke_button cke_button__scayt cke_button_off" href="javascript:void(&#39;Vérifier lorthographe&#39;)" title="Vérifier l&#39;orthographe" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_20_label" aria-describedby="cke_20_description" aria-haspopup="true" onkeydown="return CKEDITOR.tools.callFunction(23,event);" onfocus="return CKEDITOR.tools.callFunction(24,event);" onclick="CKEDITOR.tools.callFunction(25,this);return false;"><span class="cke_button_icon cke_button__scayt_icon" style="background-image:url(&#39;https://nouvelle-techno.fr/assets/ckeditor/plugins/icons.png?t=I2EI&#39;);background-position:0 -888px;background-size:auto;">&nbsp;</span><span id="cke_20_label" class="cke_button_label cke_button__scayt_label" aria-hidden="false">Vérification de l'Orthographe en Cours de Frappe (SCAYT)</span><span id="cke_20_description" class="cke_button_label" aria-hidden="false"></span><span class="cke_button_arrow"></span></a></span><span class="cke_toolbar_end"></span></span><span id="cke_21" class="cke_toolbar" aria-labelledby="cke_21_label" role="toolbar"><span id="cke_21_label" class="cke_voice_label">Liens</span><span class="cke_toolbar_start"></span><span class="cke_toolgroup" role="presentation"><a id="cke_22" class="cke_button cke_button__link cke_button_off" href="javascript:void(&#39;Lien&#39;)" title="Lien (Ctrl+L)" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_22_label" aria-describedby="cke_22_description" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(26,event);" onfocus="return CKEDITOR.tools.callFunction(27,event);" onclick="CKEDITOR.tools.callFunction(28,this);return false;"><span class="cke_button_icon cke_button__link_icon" style="background-image:url(&#39;https://nouvelle-techno.fr/assets/ckeditor/plugins/icons.png?t=I2EI&#39;);background-position:0 -528px;background-size:auto;">&nbsp;</span><span id="cke_22_label" class="cke_button_label cke_button__link_label" aria-hidden="false">Lien</span><span id="cke_22_description" class="cke_button_label" aria-hidden="false">Raccourci clavier Ctrl+L</span></a><a id="cke_23" class="cke_button cke_button__unlink cke_button_disabled " href="javascript:void(&#39;Supprimer le lien&#39;)" title="Supprimer le lien" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_23_label" aria-describedby="cke_23_description" aria-haspopup="false" aria-disabled="true" onkeydown="return CKEDITOR.tools.callFunction(29,event);" onfocus="return CKEDITOR.tools.callFunction(30,event);" onclick="CKEDITOR.tools.callFunction(31,this);return false;"><span class="cke_button_icon cke_button__unlink_icon" style="background-image:url(&#39;https://nouvelle-techno.fr/assets/ckeditor/plugins/icons.png?t=I2EI&#39;);background-position:0 -552px;background-size:auto;">&nbsp;</span><span id="cke_23_label" class="cke_button_label cke_button__unlink_label" aria-hidden="false">Supprimer le lien</span><span id="cke_23_description" class="cke_button_label" aria-hidden="false"></span></a><a id="cke_24" class="cke_button cke_button__anchor cke_button_off" href="javascript:void(&#39;Ancre&#39;)" title="Ancre" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_24_label" aria-describedby="cke_24_description" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(32,event);" onfocus="return CKEDITOR.tools.callFunction(33,event);" onclick="CKEDITOR.tools.callFunction(34,this);return false;"><span class="cke_button_icon cke_button__anchor_icon" style="background-image:url(&#39;https://nouvelle-techno.fr/assets/ckeditor/plugins/icons.png?t=I2EI&#39;);background-position:0 -504px;background-size:auto;">&nbsp;</span><span id="cke_24_label" class="cke_button_label cke_button__anchor_label" aria-hidden="false">Ancre</span><span id="cke_24_description" class="cke_button_label" aria-hidden="false"></span></a></span><span class="cke_toolbar_end"></span></span><span id="cke_25" class="cke_toolbar" aria-labelledby="cke_25_label" role="toolbar"><span id="cke_25_label" class="cke_voice_label">Insérer</span><span class="cke_toolbar_start"></span><span class="cke_toolgroup" role="presentation"><a id="cke_26" class="cke_button cke_button__image cke_button_off" href="javascript:void(&#39;Image&#39;)" title="Image" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_26_label" aria-describedby="cke_26_description" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(35,event);" onfocus="return CKEDITOR.tools.callFunction(36,event);" onclick="CKEDITOR.tools.callFunction(37,this);return false;"><span class="cke_button_icon cke_button__image_icon" style="background-image:url(&#39;https://nouvelle-techno.fr/assets/ckeditor/plugins/icons.png?t=I2EI&#39;);background-position:0 -360px;background-size:auto;">&nbsp;</span><span id="cke_26_label" class="cke_button_label cke_button__image_label" aria-hidden="false">Image</span><span id="cke_26_description" class="cke_button_label" aria-hidden="false"></span></a><a id="cke_27" class="cke_button cke_button__codesnippet cke_button_off" href="javascript:void(&#39;Insérer un extrait de code&#39;)" title="Insérer un extrait de code" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_27_label" aria-describedby="cke_27_description" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(38,event);" onfocus="return CKEDITOR.tools.callFunction(39,event);" onclick="CKEDITOR.tools.callFunction(40,this);return false;"><span class="cke_button_icon cke_button__codesnippet_icon" style="background-image:url(&#39;https://nouvelle-techno.fr/assets/ckeditor/plugins/codesnippet/icons/codesnippet.png?t=I2EI&#39;);background-position:0 0px;background-size:16px;">&nbsp;</span><span id="cke_27_label" class="cke_button_label cke_button__codesnippet_label" aria-hidden="false">Insérer un extrait de code</span><span id="cke_27_description" class="cke_button_label" aria-hidden="false"></span></a><a id="cke_28" class="cke_button cke_button__table cke_button_off" href="javascript:void(&#39;Tableau&#39;)" title="Tableau" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_28_label" aria-describedby="cke_28_description" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(41,event);" onfocus="return CKEDITOR.tools.callFunction(42,event);" onclick="CKEDITOR.tools.callFunction(43,this);return false;"><span class="cke_button_icon cke_button__table_icon" style="background-image:url(&#39;https://nouvelle-techno.fr/assets/ckeditor/plugins/icons.png?t=I2EI&#39;);background-position:0 -912px;background-size:auto;">&nbsp;</span><span id="cke_28_label" class="cke_button_label cke_button__table_label" aria-hidden="false">Tableau</span><span id="cke_28_description" class="cke_button_label" aria-hidden="false"></span></a><a id="cke_29" class="cke_button cke_button__horizontalrule cke_button_off" href="javascript:void(&#39;Ligne horizontale&#39;)" title="Ligne horizontale" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_29_label" aria-describedby="cke_29_description" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(44,event);" onfocus="return CKEDITOR.tools.callFunction(45,event);" onclick="CKEDITOR.tools.callFunction(46,this);return false;"><span class="cke_button_icon cke_button__horizontalrule_icon" style="background-image:url(&#39;https://nouvelle-techno.fr/assets/ckeditor/plugins/icons.png?t=I2EI&#39;);background-position:0 -336px;background-size:auto;">&nbsp;</span><span id="cke_29_label" class="cke_button_label cke_button__horizontalrule_label" aria-hidden="false">Ligne horizontale</span><span id="cke_29_description" class="cke_button_label" aria-hidden="false"></span></a><a id="cke_30" class="cke_button cke_button__specialchar cke_button_off" href="javascript:void(&#39;Insérer un caractère spécial&#39;)" title="Insérer un caractère spécial" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_30_label" aria-describedby="cke_30_description" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(47,event);" onfocus="return CKEDITOR.tools.callFunction(48,event);" onclick="CKEDITOR.tools.callFunction(49,this);return false;"><span class="cke_button_icon cke_button__specialchar_icon" style="background-image:url(&#39;https://nouvelle-techno.fr/assets/ckeditor/plugins/icons.png?t=I2EI&#39;);background-position:0 -864px;background-size:auto;">&nbsp;</span><span id="cke_30_label" class="cke_button_label cke_button__specialchar_label" aria-hidden="false">Insérer un caractère spécial</span><span id="cke_30_description" class="cke_button_label" aria-hidden="false"></span></a></span><span class="cke_toolbar_end"></span></span><span id="cke_31" class="cke_toolbar" aria-labelledby="cke_31_label" role="toolbar"><span id="cke_31_label" class="cke_voice_label">Outils</span><span class="cke_toolbar_start"></span><span class="cke_toolgroup" role="presentation"><a id="cke_32" class="cke_button cke_button__maximize cke_button_off" href="javascript:void(&#39;Agrandir&#39;)" title="Agrandir" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_32_label" aria-describedby="cke_32_description" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(50,event);" onfocus="return CKEDITOR.tools.callFunction(51,event);" onclick="CKEDITOR.tools.callFunction(52,this);return false;"><span class="cke_button_icon cke_button__maximize_icon" style="background-image:url(&#39;https://nouvelle-techno.fr/assets/ckeditor/plugins/icons.png?t=I2EI&#39;);background-position:0 -672px;background-size:auto;">&nbsp;</span><span id="cke_32_label" class="cke_button_label cke_button__maximize_label" aria-hidden="false">Agrandir</span><span id="cke_32_description" class="cke_button_label" aria-hidden="false"></span></a></span><span class="cke_toolbar_end"></span></span><span id="cke_33" class="cke_toolbar" aria-labelledby="cke_33_label" role="toolbar"><span id="cke_33_label" class="cke_voice_label">Document</span><span class="cke_toolbar_start"></span><span class="cke_toolgroup" role="presentation"><a id="cke_34" class="cke_button cke_button__source cke_button_off" href="javascript:void(&#39;Source&#39;)" title="Source" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_34_label" aria-describedby="cke_34_description" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(53,event);" onfocus="return CKEDITOR.tools.callFunction(54,event);" onclick="CKEDITOR.tools.callFunction(55,this);return false;"><span class="cke_button_icon cke_button__source_icon" style="background-image:url(&#39;https://nouvelle-techno.fr/assets/ckeditor/plugins/icons.png?t=I2EI&#39;);background-position:0 -840px;background-size:auto;">&nbsp;</span><span id="cke_34_label" class="cke_button_label cke_button__source_label" aria-hidden="false">Source</span><span id="cke_34_description" class="cke_button_label" aria-hidden="false"></span></a></span><span class="cke_toolbar_end"></span></span><span class="cke_toolbar_break"></span><span id="cke_35" class="cke_toolbar" aria-labelledby="cke_35_label" role="toolbar"><span id="cke_35_label" class="cke_voice_label">Styles de base</span><span class="cke_toolbar_start"></span><span class="cke_toolgroup" role="presentation"><a id="cke_36" class="cke_button cke_button__bold cke_button_off" href="javascript:void(&#39;Gras&#39;)" title="Gras (Ctrl+B)" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_36_label" aria-describedby="cke_36_description" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(56,event);" onfocus="return CKEDITOR.tools.callFunction(57,event);" onclick="CKEDITOR.tools.callFunction(58,this);return false;"><span class="cke_button_icon cke_button__bold_icon" style="background-image:url(&#39;https://nouvelle-techno.fr/assets/ckeditor/plugins/icons.png?t=I2EI&#39;);background-position:0 -24px;background-size:auto;">&nbsp;</span><span id="cke_36_label" class="cke_button_label cke_button__bold_label" aria-hidden="false">Gras</span><span id="cke_36_description" class="cke_button_label" aria-hidden="false">Raccourci clavier Ctrl+B</span></a><a id="cke_37" class="cke_button cke_button__italic cke_button_off" href="javascript:void(&#39;Italique&#39;)" title="Italique (Ctrl+I)" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_37_label" aria-describedby="cke_37_description" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(59,event);" onfocus="return CKEDITOR.tools.callFunction(60,event);" onclick="CKEDITOR.tools.callFunction(61,this);return false;"><span class="cke_button_icon cke_button__italic_icon" style="background-image:url(&#39;https://nouvelle-techno.fr/assets/ckeditor/plugins/icons.png?t=I2EI&#39;);background-position:0 -48px;background-size:auto;">&nbsp;</span><span id="cke_37_label" class="cke_button_label cke_button__italic_label" aria-hidden="false">Italique</span><span id="cke_37_description" class="cke_button_label" aria-hidden="false">Raccourci clavier Ctrl+I</span></a><a id="cke_38" class="cke_button cke_button__strike cke_button_off" href="javascript:void(&#39;Barré&#39;)" title="Barré" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_38_label" aria-describedby="cke_38_description" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(62,event);" onfocus="return CKEDITOR.tools.callFunction(63,event);" onclick="CKEDITOR.tools.callFunction(64,this);return false;"><span class="cke_button_icon cke_button__strike_icon" style="background-image:url(&#39;https://nouvelle-techno.fr/assets/ckeditor/plugins/icons.png?t=I2EI&#39;);background-position:0 -72px;background-size:auto;">&nbsp;</span><span id="cke_38_label" class="cke_button_label cke_button__strike_label" aria-hidden="false">Barré</span><span id="cke_38_description" class="cke_button_label" aria-hidden="false"></span></a><span class="cke_toolbar_separator" role="separator"></span><a id="cke_39" class="cke_button cke_button__removeformat cke_button_off" href="javascript:void(&#39;Supprimer la mise en forme&#39;)" title="Supprimer la mise en forme" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_39_label" aria-describedby="cke_39_description" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(65,event);" onfocus="return CKEDITOR.tools.callFunction(66,event);" onclick="CKEDITOR.tools.callFunction(67,this);return false;"><span class="cke_button_icon cke_button__removeformat_icon" style="background-image:url(&#39;https://nouvelle-techno.fr/assets/ckeditor/plugins/icons.png?t=I2EI&#39;);background-position:0 -792px;background-size:auto;">&nbsp;</span><span id="cke_39_label" class="cke_button_label cke_button__removeformat_label" aria-hidden="false">Supprimer la mise en forme</span><span id="cke_39_description" class="cke_button_label" aria-hidden="false"></span></a></span><span class="cke_toolbar_end"></span></span><span id="cke_40" class="cke_toolbar" aria-labelledby="cke_40_label" role="toolbar"><span id="cke_40_label" class="cke_voice_label">Paragraphe</span><span class="cke_toolbar_start"></span><span class="cke_toolgroup" role="presentation"><a id="cke_41" class="cke_button cke_button__numberedlist cke_button_off" href="javascript:void(&#39;Insérer/Supprimer une liste numérotée&#39;)" title="Insérer/Supprimer une liste numérotée" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_41_label" aria-describedby="cke_41_description" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(68,event);" onfocus="return CKEDITOR.tools.callFunction(69,event);" onclick="CKEDITOR.tools.callFunction(70,this);return false;"><span class="cke_button_icon cke_button__numberedlist_icon" style="background-image:url(&#39;https://nouvelle-techno.fr/assets/ckeditor/plugins/icons.png?t=I2EI&#39;);background-position:0 -648px;background-size:auto;">&nbsp;</span><span id="cke_41_label" class="cke_button_label cke_button__numberedlist_label" aria-hidden="false">Insérer/Supprimer une liste numérotée</span><span id="cke_41_description" class="cke_button_label" aria-hidden="false"></span></a><a id="cke_42" class="cke_button cke_button__bulletedlist cke_button_off" href="javascript:void(&#39;Insérer/Supprimer une liste à puces&#39;)" title="Insérer/Supprimer une liste à puces" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_42_label" aria-describedby="cke_42_description" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(71,event);" onfocus="return CKEDITOR.tools.callFunction(72,event);" onclick="CKEDITOR.tools.callFunction(73,this);return false;"><span class="cke_button_icon cke_button__bulletedlist_icon" style="background-image:url(&#39;https://nouvelle-techno.fr/assets/ckeditor/plugins/icons.png?t=I2EI&#39;);background-position:0 -600px;background-size:auto;">&nbsp;</span><span id="cke_42_label" class="cke_button_label cke_button__bulletedlist_label" aria-hidden="false">Insérer/Supprimer une liste à puces</span><span id="cke_42_description" class="cke_button_label" aria-hidden="false"></span></a><span class="cke_toolbar_separator" role="separator"></span><a id="cke_43" class="cke_button cke_button__outdent cke_button_disabled " href="javascript:void(&#39;Diminuer le retrait&#39;)" title="Diminuer le retrait" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_43_label" aria-describedby="cke_43_description" aria-haspopup="false" aria-disabled="true" onkeydown="return CKEDITOR.tools.callFunction(74,event);" onfocus="return CKEDITOR.tools.callFunction(75,event);" onclick="CKEDITOR.tools.callFunction(76,this);return false;"><span class="cke_button_icon cke_button__outdent_icon" style="background-image:url(&#39;https://nouvelle-techno.fr/assets/ckeditor/plugins/icons.png?t=I2EI&#39;);background-position:0 -456px;background-size:auto;">&nbsp;</span><span id="cke_43_label" class="cke_button_label cke_button__outdent_label" aria-hidden="false">Diminuer le retrait</span><span id="cke_43_description" class="cke_button_label" aria-hidden="false"></span></a><a id="cke_44" class="cke_button cke_button__indent cke_button_off" href="javascript:void(&#39;Augmenter le retrait&#39;)" title="Augmenter le retrait" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_44_label" aria-describedby="cke_44_description" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(77,event);" onfocus="return CKEDITOR.tools.callFunction(78,event);" onclick="CKEDITOR.tools.callFunction(79,this);return false;"><span class="cke_button_icon cke_button__indent_icon" style="background-image:url(&#39;https://nouvelle-techno.fr/assets/ckeditor/plugins/icons.png?t=I2EI&#39;);background-position:0 -408px;background-size:auto;">&nbsp;</span><span id="cke_44_label" class="cke_button_label cke_button__indent_label" aria-hidden="false">Augmenter le retrait</span><span id="cke_44_description" class="cke_button_label" aria-hidden="false"></span></a><span class="cke_toolbar_separator" role="separator"></span><a id="cke_45" class="cke_button cke_button__blockquote cke_button_off" href="javascript:void(&#39;Citation&#39;)" title="Citation" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_45_label" aria-describedby="cke_45_description" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(80,event);" onfocus="return CKEDITOR.tools.callFunction(81,event);" onclick="CKEDITOR.tools.callFunction(82,this);return false;"><span class="cke_button_icon cke_button__blockquote_icon" style="background-image:url(&#39;https://nouvelle-techno.fr/assets/ckeditor/plugins/icons.png?t=I2EI&#39;);background-position:0 -168px;background-size:auto;">&nbsp;</span><span id="cke_45_label" class="cke_button_label cke_button__blockquote_label" aria-hidden="false">Citation</span><span id="cke_45_description" class="cke_button_label" aria-hidden="false"></span></a></span><span class="cke_toolbar_end"></span></span><span id="cke_46" class="cke_toolbar" aria-labelledby="cke_46_label" role="toolbar"><span id="cke_46_label" class="cke_voice_label">Styles</span><span class="cke_toolbar_start"></span><span id="cke_9" class="cke_combo cke_combo__styles cke_combo_off" role="presentation"><span id="cke_9_label" class="cke_combo_label">Styles</span><a class="cke_combo_button" title="Styles de mise en forme" tabindex="-1" href="javascript:void(&#39;Styles de mise en forme&#39;)" hidefocus="true" role="button" aria-labelledby="cke_9_label" aria-haspopup="true" onkeydown="return CKEDITOR.tools.callFunction(84,event,this);" onfocus="return CKEDITOR.tools.callFunction(85,event);" onclick="CKEDITOR.tools.callFunction(83,this);return false;"><span id="cke_9_text" class="cke_combo_text cke_combo_inlinelabel">Styles</span><span class="cke_combo_open"><span class="cke_combo_arrow"></span></span></a></span><span id="cke_10" class="cke_combo cke_combo__format cke_combo_off" role="presentation"><span id="cke_10_label" class="cke_combo_label">Format</span><a class="cke_combo_button" title="Format de paragraphe" tabindex="-1" href="javascript:void(&#39;Format de paragraphe&#39;)" hidefocus="true" role="button" aria-labelledby="cke_10_label" aria-haspopup="true" onkeydown="return CKEDITOR.tools.callFunction(87,event,this);" onfocus="return CKEDITOR.tools.callFunction(88,event);" onclick="CKEDITOR.tools.callFunction(86,this);return false;"><span id="cke_10_text" class="cke_combo_text cke_combo_inlinelabel">Format</span><span class="cke_combo_open"><span class="cke_combo_arrow"></span></span></a></span><span class="cke_toolbar_end"></span></span><span id="cke_47" class="cke_toolbar cke_toolbar_last" aria-labelledby="cke_47_label" role="toolbar"><span id="cke_47_label" class="cke_voice_label">about</span><span class="cke_toolbar_start"></span><span class="cke_toolgroup" role="presentation"><a id="cke_48" class="cke_button cke_button__about cke_button_off" href="javascript:void(&#39;À propos de CKEditor 4&#39;)" title="À propos de CKEditor 4" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_48_label" aria-describedby="cke_48_description" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(89,event);" onfocus="return CKEDITOR.tools.callFunction(90,event);" onclick="CKEDITOR.tools.callFunction(91,this);return false;"><span class="cke_button_icon cke_button__about_icon" style="background-image:url(&#39;https://nouvelle-techno.fr/assets/ckeditor/plugins/icons.png?t=I2EI&#39;);background-position:0 0px;background-size:auto;">&nbsp;</span><span id="cke_48_label" class="cke_button_label cke_button__about_label" aria-hidden="false">À propos de CKEditor 4</span><span id="cke_48_description" class="cke_button_label" aria-hidden="false"></span></a></span><span class="cke_toolbar_end"></span></span></span></span><div id="cke_1_contents" class="cke_contents cke_reset" role="presentation" style="height: 200px;"><span id="cke_53" class="cke_voice_label">Utilisez le raccourci Alt-0 pour obtenir de l'aide</span><iframe src="./Laravel – Les requêtes simples en base de données - Nouvelle-Techno.fr - Création de sites web et formation_files/saved_resource.html" frameborder="0" class="cke_wysiwyg_frame cke_reset" style="width: 100%; height: 100%;" title="Éditeur de texte enrichi, description" aria-describedby="cke_53" tabindex="0" allowtransparency="true"></iframe></div><span id="cke_1_bottom" class="cke_bottom cke_reset_all" role="presentation" style="user-select: none;"><span id="cke_1_resizer" class="cke_resizer cke_resizer_vertical cke_resizer_ltr" title="Redimensionner" onmousedown="CKEDITOR.tools.callFunction(0, event)">◢</span><span id="cke_1_path_label" class="cke_voice_label">Chemin des éléments</span><span id="cke_1_path" class="cke_path" role="group" aria-labelledby="cke_1_path_label"><span class="cke_path_empty">&nbsp;</span></span></span></div></div>
+                                <script>
+                                    // Replace the <textarea id="editor1"> with a CKEditor
+                                    // instance, using default configuration.
+                                    CKEDITOR.replace( 'description' );
+                                </script> 
+
+                                                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="form-check col-10 offset-1">
+                                <input class="form-check-input" type="checkbox" name="mailReponse" id="mailReponse" checked="">
+                                <label class="form-check-label" for="mailReponse">
+                                    Je souhaite être prévenu par e-mail en cas de nouvelle réponse.
+                                </label>
+                            </div>
+                            <div class="form-check col-10 offset-1">
+                                <input class="form-check-input" type="checkbox" name="rgpd" id="rgpd">
+                                <label class="form-check-label" for="rgpd">
+                                    En utilisant ce formulaire, j'accepte le stockage et la gestion de mes données par ce site. J'ai bien noté que mes données personnelles ne seront jamais transmises à des tiers.
+                                </label>
+                                                                </div>
+                            <div class="col-10 offset-1">
+                                <div class="g-recaptcha" data-callback="imNotARobot" data-expired-callback="imARobot" data-sitekey="6LcgZ1wUAAAAAPYwRMjWlKHJc7tfLB80J2AzjxLs"><div style="width: 304px; height: 78px;"><div><iframe src="./Laravel – Les requêtes simples en base de données - Nouvelle-Techno.fr - Création de sites web et formation_files/anchor.html" width="304" height="78" role="presentation" name="a-xqp146nvntwt" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe></div><textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div></div>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-3">
+                                <button type="submit" class="btn btn-primary" id="submitbutton" style="display: none;">
+                                    Valider
+                                </button>
+                            </div>
+                        </div>
+
+                    </form>
+            </div>
+            <div class="col-md-5
+                                     text-left navArticles">
+                     <a href="https://nouvelle-techno.fr/actualites/2018/03/28/laravel-les-vues-dynamiques"><i class="fas fa-arrow-left"></i> Laravel – Les vues dynamiques</a> 
+                            </div>
+            <div class="col-md-5
+                                     offset-md-2 text-right navArticles">
+                     <a href="https://nouvelle-techno.fr/actualites/2018/05/11/pas-a-pas-inserer-une-carte-openstreetmap-sur-votre-site">Pas à pas – Insérer une carte OpenStreetMap sur votre site <i class="fas fa-arrow-right"></i></a> 
+                            </div>
+		</main>
+	</article>
+</section>
+<script type="text/javascript">
+    function imNotARobot(){
+        $("#submitbutton").show();
+    }
+    function imARobot(){
+        $("#submitbutton").hide();
+    }
+    window.onload = function(){
+        $("#vert, #rouge").on("mouseenter", function(){
+            $(this).removeClass("far");
+            $(this).addClass("fas");
+        });
+        $("#vert, #rouge").on("mouseleave", function(){
+            $(this).removeClass("fas");
+            $(this).addClass("far");
+        });
+
+        $("#vert").on("click", function(){
+            if(!(localStorage.vert30) && !(localStorage.rouge30)){
+                $.ajax({
+                    url: '/ajout/poucevert',
+                    type: 'post',
+                    data: 'idarticle=30&_token=IGhIn2xBU61SLNmKm4g8yg4oHeh44fyxsFSfDwnK'
+                }).done(function(reponse){
+                    $("#vert + span").html(reponse);
+                    localStorage.vert30 = true;
+                }).fail(function(error){
+                    console.log(error);
+                });
+            }else if(localStorage.rouge30){
+                // retrait rouge, ajout vert
+                $.ajax({
+                    url: '/ajout/poucevert',
+                    type: 'post',
+                    data: 'idarticle=30&_token=IGhIn2xBU61SLNmKm4g8yg4oHeh44fyxsFSfDwnK'
+                }).done(function(reponse){
+                    $("#vert + span").html(reponse);
+                    localStorage.vert30 = true;
+                }).fail(function(error){
+                    console.log(error);
+                });
+                $.ajax({
+                    url: '/retrait/poucerouge',
+                    type: 'post',
+                    data: 'idarticle=30&_token=IGhIn2xBU61SLNmKm4g8yg4oHeh44fyxsFSfDwnK'
+                }).done(function(reponse){
+                    $("#rouge + span").html(reponse);
+                    localStorage.rouge30 = "";
+                }).fail(function(error){
+                    console.log(error);
+                });
+                
+            }
+        });
+        $("#rouge").on("click", function(){
+            if(!(localStorage.vert30) && !(localStorage.rouge30)){
+                $.ajax({
+                    url: '/ajout/poucerouge',
+                    type: 'post',
+                    data: 'idarticle=30&_token=IGhIn2xBU61SLNmKm4g8yg4oHeh44fyxsFSfDwnK'
+                }).done(function(reponse){
+                    $("#rouge + span").html(reponse);
+                    localStorage.rouge30 = true;
+                }).fail(function(error){
+                    console.log(error);
+                });
+            }else if(localStorage.vert30){
+                // retrait rouge, ajout vert
+                $.ajax({
+                    url: '/ajout/poucerouge',
+                    type: 'post',
+                    data: 'idarticle=30&_token=IGhIn2xBU61SLNmKm4g8yg4oHeh44fyxsFSfDwnK'
+                }).done(function(reponse){
+                    $("#rouge + span").html(reponse);
+                    localStorage.rouge30 = true;
+                }).fail(function(error){
+                    console.log(error);
+                });
+                $.ajax({
+                    url: '/retrait/poucevert',
+                    type: 'post',
+                    data: 'idarticle=30&_token=IGhIn2xBU61SLNmKm4g8yg4oHeh44fyxsFSfDwnK'
+                }).done(function(reponse){
+                    $("#vert + span").html(reponse);
+                    localStorage.vert30 = "";
+                }).fail(function(error){
+                    console.log(error);
+                });
+            }
+        });
+    };
+</script>
+
+<footer class="container-fluid pt-4">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-6 col-md-3">
+						<h4>Étiquettes</h4>
+						<div class="tagcloud">
+							<p>
+																							<span style="font-size: 0.725em"><a href="https://nouvelle-techno.fr/actualites/motcle/ajax">Ajax</a> </span>
+																							<span style="font-size: 0.65em"><a href="https://nouvelle-techno.fr/actualites/motcle/api">API</a> </span>
+																							<span style="font-size: 0.8em"><a href="https://nouvelle-techno.fr/actualites/motcle/applications-mobiles">Applications Mobiles</a> </span>
+																							<span style="font-size: 0.8em"><a href="https://nouvelle-techno.fr/actualites/motcle/base-de-donnees">Base de données</a> </span>
+																							<span style="font-size: 0.725em"><a href="https://nouvelle-techno.fr/actualites/motcle/controllers">Controllers</a> </span>
+																							<span style="font-size: 0.65em"><a href="https://nouvelle-techno.fr/actualites/motcle/donnees-personnelles">Données personnelles</a> </span>
+																							<span style="font-size: 0.65em"><a href="https://nouvelle-techno.fr/actualites/motcle/formations">Formations</a> </span>
+																							<span style="font-size: 1.325em"><a href="https://nouvelle-techno.fr/actualites/motcle/framework">Framework</a> </span>
+																							<span style="font-size: 0.875em"><a href="https://nouvelle-techno.fr/actualites/motcle/generalites">Généralités</a> </span>
+																							<span style="font-size: 0.65em"><a href="https://nouvelle-techno.fr/actualites/motcle/google-analytics">Google Analytics</a> </span>
+																							<span style="font-size: 0.725em"><a href="https://nouvelle-techno.fr/actualites/motcle/google-maps">Google Maps</a> </span>
+																							<span style="font-size: 0.575em"><a href="https://nouvelle-techno.fr/actualites/motcle/htaccess">htaccess</a> </span>
+																							<span style="font-size: 1.175em"><a href="https://nouvelle-techno.fr/actualites/motcle/javascript">Javascript</a> </span>
+																							<span style="font-size: 0.875em"><a href="https://nouvelle-techno.fr/actualites/motcle/jquery">jQuery</a> </span>
+																							<span style="font-size: 0.8em"><a href="https://nouvelle-techno.fr/actualites/motcle/laravel">Laravel</a> </span>
+																							<span style="font-size: 0.725em"><a href="https://nouvelle-techno.fr/actualites/motcle/models">Models</a> </span>
+																							<span style="font-size: 1.4em"><a href="https://nouvelle-techno.fr/actualites/motcle/mvc">MVC</a> </span>
+																							<span style="font-size: 0.8em"><a href="https://nouvelle-techno.fr/actualites/motcle/mysql">MySQL</a> </span>
+																							<span style="font-size: 0.575em"><a href="https://nouvelle-techno.fr/actualites/motcle/noms-de-domaines">Noms de Domaines</a> </span>
+																							<span style="font-size: 0.65em"><a href="https://nouvelle-techno.fr/actualites/motcle/openstreetmap">Openstreetmap</a> </span>
+																							<span style="font-size: 0.8em"><a href="https://nouvelle-techno.fr/actualites/motcle/php">PHP</a> </span>
+																							<span style="font-size: 0.575em"><a href="https://nouvelle-techno.fr/actualites/motcle/requete">Requête</a> </span>
+																							<span style="font-size: 0.725em"><a href="https://nouvelle-techno.fr/actualites/motcle/rgpd">RGPD</a> </span>
+																							<span style="font-size: 0.8em"><a href="https://nouvelle-techno.fr/actualites/motcle/routes">Routes</a> </span>
+																							<span style="font-size: 0.575em"><a href="https://nouvelle-techno.fr/actualites/motcle/sessions">Sessions</a> </span>
+																							<span style="font-size: 0.95em"><a href="https://nouvelle-techno.fr/actualites/motcle/silex">Silex</a> </span>
+																							<span style="font-size: 2em"><a href="https://nouvelle-techno.fr/actualites/motcle/tutoriel">Tutoriel</a> </span>
+																							<span style="font-size: 0.575em"><a href="https://nouvelle-techno.fr/actualites/motcle/utilisateurs">Utilisateurs</a> </span>
+																							<span style="font-size: 0.65em"><a href="https://nouvelle-techno.fr/actualites/motcle/views">Views</a> </span>
+																							<span style="font-size: 0.725em"><a href="https://nouvelle-techno.fr/actualites/motcle/wordpress">Wordpress</a> </span>
+														</p>
+						</div>
+					</div>
+					<div class="col-sm-6 col-md-3">
+						<div id="archives-6" class="widget widget_archive">
+							<h4>Archives</h4>
+							<select id="archives" class="form-control mb-3">
+															<option value="https://nouvelle-techno.fr/archives/2019/04">Avril 2019 (1)</option>
+															<option value="https://nouvelle-techno.fr/archives/2018/12">Décembre 2018 (1)</option>
+															<option value="https://nouvelle-techno.fr/archives/2018/11">Novembre 2018 (1)</option>
+															<option value="https://nouvelle-techno.fr/archives/2018/09">Septembre 2018 (2)</option>
+															<option value="https://nouvelle-techno.fr/archives/2018/08">Août 2018 (2)</option>
+															<option value="https://nouvelle-techno.fr/archives/2018/07">Juillet 2018 (2)</option>
+															<option value="https://nouvelle-techno.fr/archives/2018/06">Juin 2018 (2)</option>
+															<option value="https://nouvelle-techno.fr/archives/2018/05">Mai 2018 (4)</option>
+															<option value="https://nouvelle-techno.fr/archives/2018/03">Mars 2018 (6)</option>
+															<option value="https://nouvelle-techno.fr/archives/2018/02">Février 2018 (2)</option>
+															<option value="https://nouvelle-techno.fr/archives/2018/01">Janvier 2018 (1)</option>
+															<option value="https://nouvelle-techno.fr/archives/2017/12">Décembre 2017 (11)</option>
+															<option value="https://nouvelle-techno.fr/archives/2017/11">Novembre 2017 (2)</option>
+															<option value="https://nouvelle-techno.fr/archives/2017/10">Octobre 2017 (5)</option>
+															<option value="https://nouvelle-techno.fr/archives/2017/07">Juillet 2017 (1)</option>
+														</select>
+						</div>
+						<div class="widget">
+							<h4>Social</h4>
+							<div class="text-center">
+								<a href="https://www.facebook.com/nouvelletechnofr/" target="_blank"><i class="fab fa-facebook-f fa-2x"></i></a>
+								<a href="https://twitter.com/nouvelle_techno" target="_blank"><i class="fab fa-twitter fa-2x"></i></a>
+								<a href="https://github.com/NouvelleTechno" target="_blank"><i class="fab fa-github fa-2x"></i></a>
+								<a href="https://codepen.io/nouvelletechno/" target="_blank"><i class="fab fa-codepen fa-2x"></i></a>
+							</div>
+						</div>
+					</div>
+					<div class="col-6 col-md-3">
+						<div>
+							<div id="text-4" class="widget widget_text">
+								<div class="textwidget">
+									<p><a href="http://les-dev-du-samedi.fr/"><img class="w-100" src="./Laravel – Les requêtes simples en base de données - Nouvelle-Techno.fr - Création de sites web et formation_files/LOGO_DEV_MEMBRE.png" alt=""></a></p>
+									<p><a href="https://nouvelle-techno.fr/rgpd-cookies/">Vie privée</a> - <a href="https://nouvelle-techno.fr/mentions-legales">Mentions Légales</a> 
+									</p>
+								</div>
+							</div>        
+						</div>
+					</div>
+					<div class="col-6 col-md-3">
+						<a href="https://nouvelle-techno.fr/" class="custom-logo-link" rel="home" itemprop="url">
+							<img width="250" src="./Laravel – Les requêtes simples en base de données - Nouvelle-Techno.fr - Création de sites web et formation_files/ntlogo.png" class="w-100" alt="Nouvelle-Techno.fr – Formation et création de sites internet">
+						</a>
+						<p class="text-center">
+							<script>
+								if(localStorage.theme == "black")
+									document.write('<a id="theme" href="">Version claire</a>');
+								else
+									document.write('<a id="theme" href="">Version sombre</a>');
+							</script><a id="theme" href="https://nouvelle-techno.fr/actualites/2018/03/29/laravel-les-requetes-simples-en-base-de-donnees">Version sombre</a>
+						</p>
+					</div>
+					<div class="col-12 text-center">
+						<p>©&nbsp;2019&nbsp;Nouvelle-Techno.fr - Formation et création de sites internet</p>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<div id="returnTop" style="display: block;"><a href="https://nouvelle-techno.fr/actualites/2018/03/29/laravel-les-requetes-simples-en-base-de-donnees#top"><i class="fas fa-arrow-up"></i></a></div>
+		<script type="text/javascript" src="./Laravel – Les requêtes simples en base de données - Nouvelle-Techno.fr - Création de sites web et formation_files/jquery-3.3.1.min.js.téléchargement"></script>		
+		<script type="text/javascript" src="./Laravel – Les requêtes simples en base de données - Nouvelle-Techno.fr - Création de sites web et formation_files/bootstrap.min.js.téléchargement"></script>		
+		<script type="text/javascript" src="./Laravel – Les requêtes simples en base de données - Nouvelle-Techno.fr - Création de sites web et formation_files/prism.js.téléchargement"></script>		
+		<script type="text/javascript" src="./Laravel – Les requêtes simples en base de données - Nouvelle-Techno.fr - Création de sites web et formation_files/scripts.js.téléchargement"></script>
+				
+		<script type="text/javascript">
+			$("#theme").on("click", function(){
+				localStorage.theme = (localStorage.theme == "black") ? "white" : "black";
+				location.reload();
+			});
+        //tarteaucitron.user.gajsUa = 'UA-97102682-1';
+        //tarteaucitron.user.gajsMore = function () { /* add here your optionnal _ga.push() */ };
+        //(tarteaucitron.job = tarteaucitron.job || []).push('gajs');
+        //tarteaucitron.user.gtagUa = 'UA-97102682-1';
+        //tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */ };
+        //(tarteaucitron.job = tarteaucitron.job || []).push('gtag');
+		(tarteaucitron.job = tarteaucitron.job || []).push('adsense');
+		(tarteaucitron.job = tarteaucitron.job || []).push('facebook');
+		(tarteaucitron.job = tarteaucitron.job || []).push('twitter');
+		</script>
+    
+
+<ins class="adsbygoogle adsbygoogle-noablate" data-adsbygoogle-status="done" style="display: none !important;"><div class="tac_activate">   <div class="tac_float">      <b>Google Adsense</b> est désactivé.      <div class="tarteaucitronAllow" id="Eng14675edadsense" onclick="tarteaucitron.userInterface.respond(this, true);">          ✓ Autoriser       </div>   </div></div></ins><iframe id="google_osd_static_frame_3651919049742" name="google_osd_static_frame" style="display: none; width: 0px; height: 0px;" src="./Laravel – Les requêtes simples en base de données - Nouvelle-Techno.fr - Création de sites web et formation_files/saved_resource(1).html"></iframe><div style="background-color: rgb(255, 255, 255); border: 1px solid rgb(204, 204, 204); box-shadow: rgba(0, 0, 0, 0.2) 2px 2px 3px; position: absolute; transition: visibility 0s linear 0.3s, opacity 0.3s linear 0s; opacity: 0; visibility: hidden; z-index: 2000000000; left: 0px; top: -10000px;"><div style="width: 100%; height: 100%; position: fixed; top: 0px; left: 0px; z-index: 2000000000; background-color: rgb(255, 255, 255); opacity: 0.05;"></div><div class="g-recaptcha-bubble-arrow" style="border: 11px solid transparent; width: 0px; height: 0px; position: absolute; pointer-events: none; margin-top: -11px; z-index: 2000000000;"></div><div class="g-recaptcha-bubble-arrow" style="border: 10px solid transparent; width: 0px; height: 0px; position: absolute; pointer-events: none; margin-top: -10px; z-index: 2000000000;"></div><div style="z-index: 2000000000; position: relative;"><iframe title="Test recaptcha" src="./Laravel – Les requêtes simples en base de données - Nouvelle-Techno.fr - Création de sites web et formation_files/bframe.html" name="c-xqp146nvntwt" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox" style="width: 100%; height: 100%;"></iframe></div></div><div id="tarteaucitronRoot"><div id="tarteaucitronPremium"></div><div id="tarteaucitronBack" onclick="tarteaucitron.userInterface.closePanel();"></div><div id="tarteaucitron">   <div id="tarteaucitronClosePanel" onclick="tarteaucitron.userInterface.closePanel();">       Fermer   </div>   <div id="tarteaucitronServices">      <div class="tarteaucitronLine tarteaucitronMainLine" id="tarteaucitronMainLineOffset">         <div class="tarteaucitronName">            <b><a href="https://nouvelle-techno.fr/actualites/2018/03/29/laravel-les-requetes-simples-en-base-de-donnees#" onclick="tarteaucitron.userInterface.toggle(&#39;tarteaucitronInfo&#39;, &#39;tarteaucitronInfoBox&#39;);return false">✛</a> Préférence pour tous les services</b>         </div>         <div class="tarteaucitronAsk" id="tarteaucitronScrollbarAdjust">            <div id="tarteaucitronAllAllowed" class="tarteaucitronAllow" onclick="tarteaucitron.userInterface.respondAll(true);" style="background-color: rgb(128, 128, 128);">               ✓ Autoriser            </div>             <div id="tarteaucitronAllDenied" class="tarteaucitronDeny" onclick="tarteaucitron.userInterface.respondAll(false);" style="background-color: rgb(128, 128, 128);">               ✗ Interdire            </div>         </div>      </div>      <div id="tarteaucitronInfo" class="tarteaucitronInfoBox">         En autorisant ces services tiers, vous acceptez le dépôt et la lecture de cookies et l'utilisation de technologies de suivi nécessaires à leur bon fonctionnement.        <br><br>        <a href="https://opt-out.ferank.eu/" rel="nofollow" target="_blank">Gestion des cookies par tarteaucitron.js</a>      </div>      <div class="tarteaucitronBorder" id="tarteaucitronScrollbarParent">         <div class="clear"></div>         <div id="tarteaucitronServicesTitle_api" class="tarteaucitronHidden">            <div class="tarteaucitronTitle">               <a href="https://nouvelle-techno.fr/actualites/2018/03/29/laravel-les-requetes-simples-en-base-de-donnees#" onclick="tarteaucitron.userInterface.toggle(&#39;tarteaucitronDetailsapi&#39;, &#39;tarteaucitronInfoBox&#39;);return false">✛</a> APIs            </div>            <div id="tarteaucitronDetailsapi" class="tarteaucitronDetails tarteaucitronInfoBox">               Les APIs permettent de charger des scripts : géolocalisation, moteurs de recherche, traductions, ...            </div>         </div>         <div id="tarteaucitronServices_api"></div>         <div id="tarteaucitronServicesTitle_other" class="tarteaucitronHidden">            <div class="tarteaucitronTitle">               <a href="https://nouvelle-techno.fr/actualites/2018/03/29/laravel-les-requetes-simples-en-base-de-donnees#" onclick="tarteaucitron.userInterface.toggle(&#39;tarteaucitronDetailsother&#39;, &#39;tarteaucitronInfoBox&#39;);return false">✛</a> Autre            </div>            <div id="tarteaucitronDetailsother" class="tarteaucitronDetails tarteaucitronInfoBox">               Services visant à afficher du contenu web.            </div>         </div>         <div id="tarteaucitronServices_other"></div>         <div id="tarteaucitronServicesTitle_comment" class="tarteaucitronHidden">            <div class="tarteaucitronTitle">               <a href="https://nouvelle-techno.fr/actualites/2018/03/29/laravel-les-requetes-simples-en-base-de-donnees#" onclick="tarteaucitron.userInterface.toggle(&#39;tarteaucitronDetailscomment&#39;, &#39;tarteaucitronInfoBox&#39;);return false">✛</a> Commentaires            </div>            <div id="tarteaucitronDetailscomment" class="tarteaucitronDetails tarteaucitronInfoBox">               Les gestionnaires de commentaires facilitent le dépôt de vos commentaires et luttent contre le spam.            </div>         </div>         <div id="tarteaucitronServices_comment"></div>         <div id="tarteaucitronServicesTitle_analytic" class="tarteaucitronHidden">            <div class="tarteaucitronTitle">               <a href="https://nouvelle-techno.fr/actualites/2018/03/29/laravel-les-requetes-simples-en-base-de-donnees#" onclick="tarteaucitron.userInterface.toggle(&#39;tarteaucitronDetailsanalytic&#39;, &#39;tarteaucitronInfoBox&#39;);return false">✛</a> Mesure d'audience            </div>            <div id="tarteaucitronDetailsanalytic" class="tarteaucitronDetails tarteaucitronInfoBox">               Les services de mesure d'audience permettent de générer des statistiques de fréquentation utiles à l'amélioration du site.            </div>         </div>         <div id="tarteaucitronServices_analytic"></div>         <div id="tarteaucitronServicesTitle_ads" class="tarteaucitronHidden" style="display: block;">            <div class="tarteaucitronTitle">               <a href="https://nouvelle-techno.fr/actualites/2018/03/29/laravel-les-requetes-simples-en-base-de-donnees#" onclick="tarteaucitron.userInterface.toggle(&#39;tarteaucitronDetailsads&#39;, &#39;tarteaucitronInfoBox&#39;);return false">✛</a> Régies publicitaires            </div>            <div id="tarteaucitronDetailsads" class="tarteaucitronDetails tarteaucitronInfoBox">               Les régies publicitaires permettent de générer des revenus en commercialisant les espaces publicitaires du site.            </div>         </div>         <div id="tarteaucitronServices_ads"><div id="adsenseLine" class="tarteaucitronLine">   <div class="tarteaucitronName">       <b>Google Adsense</b><br>       <span id="tacCLadsense" class="tarteaucitronListCookies">Ce service ne dépose aucun cookie.</span><br>       <a href="https://opt-out.ferank.eu/service/adsense/" target="_blank" rel="noopener">           En savoir plus       </a>        -        <a href="http://www.google.com/ads/preferences/" target="_blank" rel="noopener">           Voir le site officiel       </a>   </div>   <div class="tarteaucitronAsk">       <div id="adsenseAllowed" class="tarteaucitronAllow" onclick="tarteaucitron.userInterface.respond(this, true);">           ✓ Autoriser       </div>        <div id="adsenseDenied" class="tarteaucitronDeny" onclick="tarteaucitron.userInterface.respond(this, false);">           ✗ Interdire       </div>   </div></div></div>         <div id="tarteaucitronServicesTitle_social" class="tarteaucitronHidden" style="display: block;">            <div class="tarteaucitronTitle">               <a href="https://nouvelle-techno.fr/actualites/2018/03/29/laravel-les-requetes-simples-en-base-de-donnees#" onclick="tarteaucitron.userInterface.toggle(&#39;tarteaucitronDetailssocial&#39;, &#39;tarteaucitronInfoBox&#39;);return false">✛</a> Réseaux sociaux            </div>            <div id="tarteaucitronDetailssocial" class="tarteaucitronDetails tarteaucitronInfoBox">               Les réseaux sociaux permettent d'améliorer la convivialité du site et aident à sa promotion via les partages.            </div>         </div>         <div id="tarteaucitronServices_social"><div id="facebookLine" class="tarteaucitronLine">   <div class="tarteaucitronName">       <b>Facebook</b><br>       <span id="tacCLfacebook" class="tarteaucitronListCookies">Ce service ne dépose aucun cookie.</span><br>       <a href="https://opt-out.ferank.eu/service/facebook/" target="_blank" rel="noopener">           En savoir plus       </a>        -        <a href="https://www.facebook.com/policies/cookies/" target="_blank" rel="noopener">           Voir le site officiel       </a>   </div>   <div class="tarteaucitronAsk">       <div id="facebookAllowed" class="tarteaucitronAllow" onclick="tarteaucitron.userInterface.respond(this, true);">           ✓ Autoriser       </div>        <div id="facebookDenied" class="tarteaucitronDeny" onclick="tarteaucitron.userInterface.respond(this, false);">           ✗ Interdire       </div>   </div></div><div id="twitterLine" class="tarteaucitronLine">   <div class="tarteaucitronName">       <b>Twitter</b><br>       <span id="tacCLtwitter" class="tarteaucitronListCookies">Ce service ne dépose aucun cookie.</span><br>       <a href="https://opt-out.ferank.eu/service/twitter/" target="_blank" rel="noopener">           En savoir plus       </a>        -        <a href="https://support.twitter.com/articles/20170514" target="_blank" rel="noopener">           Voir le site officiel       </a>   </div>   <div class="tarteaucitronAsk">       <div id="twitterAllowed" class="tarteaucitronAllow" onclick="tarteaucitron.userInterface.respond(this, true);">           ✓ Autoriser       </div>        <div id="twitterDenied" class="tarteaucitronDeny" onclick="tarteaucitron.userInterface.respond(this, false);">           ✗ Interdire       </div>   </div></div></div>         <div id="tarteaucitronServicesTitle_support" class="tarteaucitronHidden">            <div class="tarteaucitronTitle">               <a href="https://nouvelle-techno.fr/actualites/2018/03/29/laravel-les-requetes-simples-en-base-de-donnees#" onclick="tarteaucitron.userInterface.toggle(&#39;tarteaucitronDetailssupport&#39;, &#39;tarteaucitronInfoBox&#39;);return false">✛</a> Support            </div>            <div id="tarteaucitronDetailssupport" class="tarteaucitronDetails tarteaucitronInfoBox">               Les services de support vous permettent d'entrer en contact avec l'équipe du site et d'aider à son amélioration.            </div>         </div>         <div id="tarteaucitronServices_support"></div>         <div id="tarteaucitronServicesTitle_video" class="tarteaucitronHidden">            <div class="tarteaucitronTitle">               <a href="https://nouvelle-techno.fr/actualites/2018/03/29/laravel-les-requetes-simples-en-base-de-donnees#" onclick="tarteaucitron.userInterface.toggle(&#39;tarteaucitronDetailsvideo&#39;, &#39;tarteaucitronInfoBox&#39;);return false">✛</a> Vidéos            </div>            <div id="tarteaucitronDetailsvideo" class="tarteaucitronDetails tarteaucitronInfoBox">               Les services de partage de vidéo permettent d'enrichir le site de contenu multimédia et augmentent sa visibilité.            </div>         </div>         <div id="tarteaucitronServices_video"></div>         <div class="tarteaucitronHidden" id="tarteaucitronScrollbarChild" style="height:20px;display:block"></div>       </div>   </div></div><div id="tarteaucitronAlertBig" class="tarteaucitronAlertBigBottom" style="display: block;">   <span id="tarteaucitronDisclaimerAlert">       Ce site utilise des cookies et vous donne le contrôle sur ce que vous souhaitez activer   </span>   <span id="tarteaucitronPersonalize" onclick="tarteaucitron.userInterface.openPanel();">       Personnaliser   </span></div><div id="tarteaucitronAlertSmall" style="display: none;">   <div id="tarteaucitronManager" onclick="tarteaucitron.userInterface.openPanel();">       Gestion des services       <div id="tarteaucitronDot">           <span id="tarteaucitronDotGreen" style="width: 0%;"></span>           <span id="tarteaucitronDotYellow" style="width: 100%;"></span>           <span id="tarteaucitronDotRed" style="width: 0%;"></span>       </div>   </div><!-- @whitespace   --><div id="tarteaucitronCookiesNumber" onclick="tarteaucitron.userInterface.toggleCookiesList();">2</div>   <div id="tarteaucitronCookiesListContainer">       <div id="tarteaucitronClosePanelCookie" onclick="tarteaucitron.userInterface.closePanel();">           Fermer       </div>       <div class="tarteaucitronCookiesListMain" id="tarteaucitronCookiesTitle">            <b id="tarteaucitronCookiesNumberBis">2 cookies</b>       </div>       <div id="tarteaucitronCookiesList"><div class="tarteaucitronHidden">     <div class="tarteaucitronTitle">        nouvelle-techno.fr    </div></div><div class="tarteaucitronCookiesListMain">    <div class="tarteaucitronCookiesListLeft"><a href="https://nouvelle-techno.fr/actualites/2018/03/29/laravel-les-requetes-simples-en-base-de-donnees#" onclick="tarteaucitron.cookie.purge([&#39; tarteaucitron&#39;]);tarteaucitron.cookie.number();tarteaucitron.userInterface.jsSizing(&#39;cookie&#39;);return false"><b>×</b></a> <b>tarteaucitron</b>    </div>    <div class="tarteaucitronCookiesListRight">!adsense=wait!facebook=wait!twitter=wait</div></div><div class="tarteaucitronCookiesListMain">    <div class="tarteaucitronCookiesListLeft"><a href="https://nouvelle-techno.fr/actualites/2018/03/29/laravel-les-requetes-simples-en-base-de-donnees#" onclick="tarteaucitron.cookie.purge([&#39;XSRF-TOKEN&#39;]);tarteaucitron.cookie.number();tarteaucitron.userInterface.jsSizing(&#39;cookie&#39;);return false"><b>×</b></a> <b>XSRF-TOKEN</b>    </div>    <div class="tarteaucitronCookiesListRight">eyJpdiI6Iit4Q3NSaVcxZXc2UzZaSFwvTFE1Tk5RPT0iLCJ2YWx1ZSI6IjBMR0RqK1JFME9xd25GT09NWWw1eUI3U2d2NTRRUGJ3UnBoQjZlN0ZPVDkwVUhDdEdvRXlZZUZJZFdpY0t5anB3eFZOXC9qTFwvaTRnK3BwVlJoSkFKcFE9PSIsIm1hYyI6IjIzNGMyYTcxY2Y1OGMwYzYxMTQzN2ExM2Q2NTVlNDFjZTE2MWFlZDhiMjgzYTE5MWY0YmUxNWE1YmNlZjY4YjUifQ%3D%3D</div></div><div class="tarteaucitronHidden" style="height:20px;display:block"></div></div>    </div></div></div></body><iframe id="google_shimpl" style="display: none;" src="./Laravel – Les requêtes simples en base de données - Nouvelle-Techno.fr - Création de sites web et formation_files/saved_resource(2).html"></iframe><iframe id="google_esf" name="google_esf" src="./Laravel – Les requêtes simples en base de données - Nouvelle-Techno.fr - Création de sites web et formation_files/zrt_lookup.html" data-ad-client="ca-pub-3582925457082752" style="display: none;"></iframe></html>

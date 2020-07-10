@@ -1,0 +1,135 @@
+/*!
+ * Start Bootstrap - Blog Post (http://startbootstrap.com/)
+ * Copyright 2013-2016 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ */
+
+body {
+    /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+}
+
+footer {
+    margin-top: 10px;
+}
+
+.fixed-ads{
+    position: fixed;
+    background: black;
+    width: 728px;
+    height: 90px;
+    bottom: 0px;
+    left: 8%;
+    z-index: 1001;
+}
+
+.navbar-inverse{
+	background-color: #337ab7 !important;
+	border-color:#337ab7 !important;
+	border-radius: 0px;
+}
+.navbar-inverse .navbar-nav > li > a{
+	color: white;
+}
+.navbar-inverse .navbar-brand{
+	color: white;	
+}
+.article-title{
+	font-size: 25px !important;
+}
+.post-rel{
+	background: #deeded;
+    padding: 15px;
+}
+.post-rel strong{
+	background: #3379b7;
+    color: white;
+    display: block;
+    padding: 10px 0px;
+    text-align: center;
+    font-size: 19px;
+}
+.post-rel li{
+	padding-bottom: 8px;
+}
+pre p{
+    margin:0 0 4px;
+}
+@keyframes blink 
+{  
+ 0% { opacity: 1.0; }
+ 50% { opacity: 0.0; }
+ 100% { opacity: 1.0; }
+}
+.sidebar-head-rand{
+    text-align: left;
+    background: #3379b7;
+    padding: 16px 14px;
+    color: white;
+}
+.mat-ul ul{
+    list-style-type: none;
+    padding-left: 0;
+}
+.mat-ul ul li{
+    padding-bottom: 5px;
+}
+.cat-lab .label{
+    border-radius: 0px;
+    font-size: 11px;
+}
+.cat-lab a:hover{
+    cursor: pointer !important;
+}
+.well h4{
+    background: #337ab7;
+    padding: 10px;
+    color: white;
+    border-radius: 3px;
+    margin-top: 0px;
+    font-weight: bold;
+}
+.well{
+    padding: 10px 19px !important;
+}
+.gsc-input-box{
+    height: 33px !important;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 3px solid #337ab7;
+    margin: 1em 0;
+    padding: 0; 
+}
+a .label{
+    cursor: pointer !important;
+}
+.max-header{
+    min-height: 100px;
+}
+.max-header .col-md-3{
+    padding-top:25px;
+}
+.max-header .col-md-9{
+    padding-top:5px;
+}
+.max-header a{
+    font-size: 34px;
+    font-weight: bold;
+}
+.navbar-nav a{
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    border-right: 1px solid #89a0cc;
+    padding-left: 25px !important;
+    padding-right: 25px !important;
+}
+.navbar-nav{
+    margin-left: -30px;
+}
+.navbar-nav li:first-child{
+    border-left: 1px solid #89a0cc;
+}
